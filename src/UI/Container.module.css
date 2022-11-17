@@ -1,0 +1,19 @@
+.container {
+  padding: 1rem;
+  /* REMOVE */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  height: 90%;
+}
+
+.medium-container {
+  max-width: 1024px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.large-container {
+  width: 90%;
+  margin: 0 auto;
+}

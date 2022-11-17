@@ -1,0 +1,19 @@
+.todo-item__heading {
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0;
+}
+
+.todo-item__priority {
+  font-size: 10px;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 1px 5px;
+}
+
+.todo-item__content {
+  margin: 0;
+  margin-top: 7px;
+  font-size: 13px;
+}

@@ -1,0 +1,57 @@
+.popup {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  width: 300px;
+}
+
+.popup ul {
+  list-style: none outside;
+  padding: 7px 0;
+  margin: 0;
+  position: relative;
+}
+
+.popup ul li {
+  padding: 6px 7px;
+}
+
+.popup ul li.list-item__section--heading {
+  border-bottom: 1px solid #091e4221;
+  color: #5e6c84;
+  text-align: center;
+  font-size: 13px;
+  padding-bottom: 10px;
+}
+
+.popup ul li:not(.list-item__section--heading) {
+  font-size: 13px;
+  transition: background-color 0.25s ease-out;
+}
+
+.popup ul li:not(.list-item__section--heading):hover {
+  background-color: #091e420a;
+  cursor: pointer;
+}
+
+.popup ul.disable-lis li:not(.list-item__section--heading) {
+  opacity: 0.4;
+  cursor: not-allowed !important;
+}
+
+.close-button {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #ebecf0;
+  display: grid;
+  place-content: center;
+  border-radius: 0 0 4px 0;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}

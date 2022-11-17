@@ -1,0 +1,16 @@
+.add-todo__text {
+  font-size: 14px;
+  color: #818181;
+  width: 100%;
+  padding: 3px 6px;
+  border-radius: 3px;
+  transition: background-color 0.25s ease-out;
+}
+
+.add-todo__text:hover {
+  background-color: #091e4214;
+}
+
+.add-todo__text:active {
+  background-color: #091e4221;
+}
