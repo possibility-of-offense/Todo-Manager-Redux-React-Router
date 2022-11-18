@@ -1,5 +1,7 @@
 .nav {
   background-color: #020306c5;
+  position: relative;
+  z-index: 100;
 }
 
 .nav ul {
