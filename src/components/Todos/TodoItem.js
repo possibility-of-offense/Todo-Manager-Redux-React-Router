@@ -25,14 +25,15 @@ const TodoItem = ({ todo }) => {
 
   const navigate = useNavigate();
   const handleNavigate = () => {
-    console.log(5);
-    navigate("/details/4");
+    navigate("/details/" + todo.id);
   };
 
   return (
     <Card key={todo.id} type="white" className="mb-0-8">
       <div className="flex flex-justify-space-between" onClick={handleNavigate}>
-        <h3 className={classes["todo-item__heading"]}>{todo.name}</h3>
+        <h3 className={`${classes["todo-item__heading"]} cursor-pointer`}>
+          {todo.name}
+        </h3>
         <TodoPriority
           className={classes["todo-item__priority"]}
           priority={todo.priority}

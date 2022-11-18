@@ -1,15 +1,11 @@
-import DoingContainer from "../components/TodosContainers/Doing/DoingContainer";
-import DoneContainer from "../components/TodosContainers/Done/DoneContainer";
-import TodoContainer from "../components/TodosContainers/ToDo/TodoContainer";
+import { Outlet } from "react-router-dom";
 import Container from "../UI/Container";
 
 const Home = () => {
   return (
     <div>
       <Container width="medium-container">
-        <TodoContainer />
-        <DoingContainer />
-        <DoneContainer />
+        <Outlet />
       </Container>
     </div>
   );

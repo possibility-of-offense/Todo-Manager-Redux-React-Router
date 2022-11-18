@@ -2,7 +2,8 @@ import { Fragment } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Generic/Navigation";
 import Home from "./views/Home";
-import TodoDetails from "./views/TodoDetails";
+import TodoBoxes from "./views/HomeNestedRoutes/TodoBoxes";
+import TodoDetails from "./views/HomeNestedRoutes/TodoDetails";
 
 function App() {
   return (
@@ -10,8 +11,10 @@ function App() {
       <Navigation />
       <br />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/details/:detail" element={<TodoDetails />} />
+        <Route path="/" element={<Home />}>
+          <Route index element={<TodoBoxes />} />
+          <Route path="details/:detail" element={<TodoDetails />} />
+        </Route>
       </Routes>
     </Fragment>
   );
