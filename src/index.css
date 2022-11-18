@@ -11,6 +11,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url("../assets/todos.jpg") no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
 }
 
 code {
@@ -66,6 +70,14 @@ code {
   margin-bottom: 1rem;
 }
 
+.mt-0-5 {
+  margin-top: 0.5rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
 .mt-auto {
   margin-top: auto;
 }
@@ -84,4 +96,12 @@ code {
 
 .user-select-none {
   user-select: none;
+}
+
+/* DELETE */
+.modal {
+  background-color: #fff;
+  position: fixed;
+  top: 30%;
+  width: 600px;
 }

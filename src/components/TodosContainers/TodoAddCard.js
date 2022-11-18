@@ -1,5 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { Fragment } from "react";
+import WhiteBgInput from "../../UI/WhiteBgInput";
+import WhiteBgTextarea from "../../UI/WhiteBgTextarea";
 import classes from "./TodoAddCard.module.css";
 
 const TodoAddCard = ({ onCloseTodo, handleAddTodo }) => {
@@ -24,17 +26,8 @@ const TodoAddCard = ({ onCloseTodo, handleAddTodo }) => {
   return (
     <Fragment>
       <form onSubmit={handleSubmitAddTodo} className={classes["form-add-todo"]}>
-        <input
-          className={`${classes.input} box-shadow-2`}
-          placeholder="Add Name"
-          type="text"
-          name="name"
-        />
-        <textarea
-          name="content"
-          placeholder="Add Content"
-          className={`${classes.textarea} box-shadow-2`}
-        ></textarea>
+        <WhiteBgInput placeholder="Add Name" type="text" name="name" />
+        <WhiteBgTextarea placeholder="Add Content" name="content" />
         <div className="flex flex-align-items-center">
           <button className={classes.button}>Add Todo</button>
           <span onClick={() => onCloseTodo(false)} className={classes.close}>

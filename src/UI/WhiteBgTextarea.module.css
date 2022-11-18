@@ -1,0 +1,15 @@
+.textarea {
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 6px 12px;
+  padding-bottom: 8px;
+  width: 100%;
+  display: block;
+  border: none;
+  resize: none;
+  height: 80px;
+}
+
+.textarea:focus {
+  outline: none;
+}

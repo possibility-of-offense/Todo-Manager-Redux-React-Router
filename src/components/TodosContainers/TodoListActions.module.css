@@ -1,24 +1,16 @@
-.popup {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  background-color: #fff;
-  border-radius: 4px;
-  width: 300px;
-}
-
-.popup ul {
+ul.list-actions__ul {
   list-style: none outside;
   padding: 7px 0;
   margin: 0;
   position: relative;
 }
 
-.popup ul li {
+ul.list-actions__ul li {
   padding: 6px 7px;
+  position: relative;
 }
 
-.popup ul li.list-item__section--heading {
+ul.list-actions__ul li.list-item__section--heading {
   border-bottom: 1px solid #091e4221;
   color: #5e6c84;
   text-align: center;
@@ -26,17 +18,17 @@
   padding-bottom: 10px;
 }
 
-.popup ul li:not(.list-item__section--heading) {
+ul.list-actions__ul li:not(.list-item__section--heading) {
   font-size: 13px;
   transition: background-color 0.25s ease-out;
 }
 
-.popup ul li:not(.list-item__section--heading):hover {
+ul.list-actions__ul li:not(.list-item__section--heading):hover {
   background-color: #091e420a;
   cursor: pointer;
 }
 
-.popup ul.disable-lis li:not(.list-item__section--heading) {
+ul.list-actions__ul.disable-lis li:not(.list-item__section--heading) {
   opacity: 0.4;
   cursor: not-allowed !important;
 }

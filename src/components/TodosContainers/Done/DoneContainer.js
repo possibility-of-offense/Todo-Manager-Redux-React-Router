@@ -5,30 +5,35 @@ import TodoContainerHeading from "../TodoContainerHeading";
 import TodoContainerPopupAction from "../TodoContainerPopupAction";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, removeAllTodos } from "../../../features/todosSlice";
+import {
+  addTodo,
+  changeAllPriority,
+  changeSpecificTodoPriority,
+  removeAllTodos,
+} from "../../../features/todosSlice";
 import NoTodos from "../../Todos/NoTodos";
-import { useCallback, useEffect, useMemo, useReducer } from "react";
+import React, { useCallback, useEffect, useMemo, useReducer } from "react";
 import { ContainerPopupCallbacks } from "../../../context/ContainerPopupCallbacks";
 import sortingReducer from "../../../reducers/sortingReducer";
 
-const DoneContainer = () => {
+const TodoContainer = () => {
   const dispatch = useDispatch();
 
-  const getTodos = useSelector((state) => state.todos.done);
-  const getTodosLength = Object.values(getTodos).length;
+  const selectTodos = useSelector((state) => state.todos.done);
+  const selectTodosLength = Object.values(selectTodos).length;
 
   const [sortingState, sortingDispatcher] = useReducer(sortingReducer, {
-    todos: Object.values(getTodos),
+    todos: Object.values(selectTodos),
   });
 
   useEffect(() => {
-    if (Object.values(getTodos).length > 0) {
+    if (Object.values(selectTodos).length > 0) {
       sortingDispatcher({
         type: "FILL_TODOS",
-        payload: Object.values(getTodos),
+        payload: Object.values(selectTodos),
       });
     }
-  }, [getTodos]);
+  }, [selectTodos]);
 
   const handleSorting = useCallback((type) => {
     sortingDispatcher({ type });
@@ -38,7 +43,7 @@ const DoneContainer = () => {
     (todo) => {
       dispatch(
         addTodo({
-          category: "todos",
+          category: "done",
           todo,
         })
       );
@@ -47,18 +52,43 @@ const DoneContainer = () => {
   );
 
   const handleRemoveAllTodos = useCallback(() => {
-    dispatch(removeAllTodos("todos"));
+    dispatch(removeAllTodos("done"));
     sortingDispatcher({ type: "REMOVE_ALL" });
   }, [dispatch]);
+
+  const handleChangePriority = useCallback(
+    (priority) => {
+      dispatch(changeAllPriority({ category: "done", priority }));
+    },
+    [dispatch]
+  );
+
+  const handleChangePrioritySpecificTodo = useCallback(
+    ({ id, priority }) => {
+      dispatch(changeSpecificTodoPriority({ category: "done", id, priority }));
+    },
+    [dispatch]
+  );
 
   const callbacks = useMemo(() => {
     return {
       handleAddTodo,
       handleRemoveAllTodos,
       handleSorting,
-      getTodosLength,
+      handleChangePriority,
+      handleChangePrioritySpecificTodo,
+      selectTodos,
+      selectTodosLength,
     };
-  }, [handleAddTodo, handleRemoveAllTodos, handleSorting, getTodosLength]);
+  }, [
+    handleAddTodo,
+    handleRemoveAllTodos,
+    handleSorting,
+    handleChangePriority,
+    handleChangePrioritySpecificTodo,
+    selectTodos,
+    selectTodosLength,
+  ]);
 
   return (
     <Card type="light-gray" className="flex flex-direction-column">
@@ -83,4 +113,4 @@ const DoneContainer = () => {
   );
 };
 
-export default DoneContainer;
+export default TodoContainer;

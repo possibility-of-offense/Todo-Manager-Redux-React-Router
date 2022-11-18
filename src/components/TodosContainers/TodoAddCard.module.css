@@ -1,36 +1,8 @@
 .form-add-todo {
   width: 100%;
-}
-
-.input {
-  background-color: #fff;
-  border-radius: 3px;
-  padding: 6px 12px;
-  padding-bottom: 8px;
-  width: 100%;
-  display: block;
-  border: none;
-  margin-bottom: 6px;
-}
-
-.input:focus {
-  outline: none;
-}
-
-.textarea {
-  background-color: #fff;
-  border-radius: 3px;
-  padding: 6px 12px;
-  padding-bottom: 8px;
-  width: 100%;
-  display: block;
-  border: none;
-  resize: none;
-  height: 80px;
-}
-
-.textarea:focus {
-  outline: none;
+  margin-top: 1rem;
+  padding-top: 7px;
+  border-top: 1px solid #091e4221;
 }
 
 .button {

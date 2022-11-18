@@ -64,9 +64,42 @@ const todosSlice = createSlice({
       const category = action.payload;
       state[category] = {};
     },
+    changeAllPriority(state, action) {
+      const { category, priority } = action.payload;
+
+      state[category] = Object.fromEntries(
+        Object.entries(state[category]).map((el) => {
+          return [
+            el[0],
+            {
+              ...el[1],
+              priority,
+            },
+          ];
+        })
+      );
+    },
+    changeSpecificTodoPriority(state, action) {
+      const { category, id, priority } = action.payload;
+
+      console.log(id, priority);
+
+      if (state[category][id]) {
+        state[category][id] = {
+          ...state[category][id],
+          priority,
+        };
+      }
+    },
   },
 });
 
-export const { addTodo, removeTodo, removeAllTodos } = todosSlice.actions;
+export const {
+  addTodo,
+  removeTodo,
+  removeAllTodos,
+  changeAllPriority,
+  changeSpecificTodoPriority,
+} = todosSlice.actions;
 
 export default todosSlice.reducer;
