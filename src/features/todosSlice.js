@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const handleAddition = (state, payload, cb) => {
   const { category, todo } = payload;
@@ -82,8 +82,6 @@ const todosSlice = createSlice({
     changeSpecificTodoPriority(state, action) {
       const { category, id, priority } = action.payload;
 
-      console.log(id, priority);
-
       if (state[category][id]) {
         state[category][id] = {
           ...state[category][id],
@@ -91,8 +89,42 @@ const todosSlice = createSlice({
         };
       }
     },
+    updateTodo(state, action) {
+      const { category, id, todo } = action.payload;
+
+      if (state[category][id]) {
+        state[category][id] = {
+          ...state[category][id],
+          ...todo,
+        };
+      }
+    },
   },
 });
+
+export const getTodoById = createSelector(
+  (state) => state.todos,
+  (state, id) => id,
+  (state, id) => {
+    const todos = Object.entries(state);
+
+    let todo = {};
+    let category = undefined;
+
+    for (let [cat, objects] of todos) {
+      if (objects[id]) {
+        category = cat;
+        todo = objects[id];
+        break;
+      }
+    }
+
+    return {
+      todo,
+      category,
+    };
+  }
+);
 
 export const {
   addTodo,
@@ -100,6 +132,7 @@ export const {
   removeAllTodos,
   changeAllPriority,
   changeSpecificTodoPriority,
+  updateTodo,
 } = todosSlice.actions;
 
 export default todosSlice.reducer;

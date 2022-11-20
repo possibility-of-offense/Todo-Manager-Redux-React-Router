@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -98,7 +102,33 @@ code {
   user-select: none;
 }
 
-/* DELETE */
+.d-none {
+  display: none;
+}
+
+.btn {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 18px;
+  border: none;
+  background-color: #0079bf;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0b6192;
+}
+
+/* Text manipulation */
+.text-center {
+  text-align: center;
+}
+
+/* Modal */
 .overlay {
   position: fixed;
   top: 0;
@@ -107,6 +137,7 @@ code {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal {
   background-color: #fff;
   position: fixed;

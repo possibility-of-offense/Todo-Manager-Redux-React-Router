@@ -29,7 +29,7 @@ const TodoAddCard = ({ onCloseTodo, handleAddTodo }) => {
         <WhiteBgInput placeholder="Add Name" type="text" name="name" />
         <WhiteBgTextarea placeholder="Add Content" name="content" />
         <div className="flex flex-align-items-center">
-          <button className={classes.button}>Add Todo</button>
+          <button className="btn">Add Todo</button>
           <span onClick={() => onCloseTodo(false)} className={classes.close}>
             &times;
           </span>

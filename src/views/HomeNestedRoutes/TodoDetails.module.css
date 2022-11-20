@@ -1,0 +1,93 @@
+.go-back {
+  background-color: #59aae7;
+  border: none;
+  border-radius: 25px;
+  padding: 5px 20px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 1px 1.2px rgba(0, 0, 0, 0.3), 0 1.3px 1.5px rgba(0, 0, 0, 0.32);
+  transition: all 0.25s ease-out;
+}
+
+.go-back:hover {
+  background-color: #5198cd;
+  box-shadow: 0 1.4px 1.6px rgba(0, 0, 0, 0.4), 0 1.7px 2px rgba(0, 0, 0, 0.52);
+}
+
+.heading {
+  display: grid;
+  grid-template-columns: 25px auto;
+  grid-gap: 10px;
+}
+
+.description {
+  display: grid;
+  grid-gap: 4px;
+}
+
+.heading img,
+.description img {
+  width: 25px;
+  margin-top: 6px;
+}
+
+.heading > div {
+  display: grid;
+}
+
+.heading textarea,
+.description textarea {
+  display: inline-block;
+  font-size: 20px;
+  padding-left: 4px;
+  height: 30px;
+  width: 100%;
+  border: none;
+  resize: none;
+  color: #172b4d;
+  border-radius: 3px;
+}
+
+.description textarea.show-textarea-description {
+  height: 150px;
+  box-shadow: inset 0 0 0 2px #0079bf;
+}
+
+.heading textarea:focus,
+.heading textarea:active,
+.description textarea:focus,
+.description textarea:active {
+  box-shadow: inset 0 0 0 2px #0079bf;
+  outline: none;
+}
+
+.heading__title--in-list {
+  font-size: 13px;
+  margin-left: 8px;
+  font-weight: normal;
+  color: #5e6c84;
+}
+
+.heading__title--in-list > span {
+  text-decoration: underline;
+}
+
+.description div p {
+  margin: 0;
+  margin-top: 6px;
+  margin-left: 10px;
+  color: #5e6c84;
+}
+
+.description textarea {
+  margin-top: 7px;
+}
+
+.description__div {
+  padding-left: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
