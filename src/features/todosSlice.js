@@ -99,6 +99,12 @@ const todosSlice = createSlice({
         };
       }
     },
+    moveTodoToAnotherCategory(state, action) {
+      const { oldCategory, newCategory, todo } = action.payload;
+
+      delete state[oldCategory][todo.id];
+      state[newCategory][todo.id] = todo;
+    },
   },
 });
 
@@ -133,6 +139,7 @@ export const {
   changeAllPriority,
   changeSpecificTodoPriority,
   updateTodo,
+  moveTodoToAnotherCategory,
 } = todosSlice.actions;
 
 export default todosSlice.reducer;

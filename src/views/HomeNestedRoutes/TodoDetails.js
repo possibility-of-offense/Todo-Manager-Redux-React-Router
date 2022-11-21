@@ -4,10 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import title from "./title.png";
 import meta from "./meta.png";
 import classes from "./TodoDetails.module.css";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import useDetectOutsideClick from "../../hooks/useDeteckOutsideClick";
-import { getTodoById, updateTodo } from "../../features/todosSlice";
+import {
+  getTodoById,
+  moveTodoToAnotherCategory,
+  updateTodo,
+} from "../../features/todosSlice";
 import { formatCategory } from "../../helpers/format-category";
+import TodoPriorityToggler from "../../components/Todos/TodoPriorityToggler";
+import TodoChangeCategory from "../../components/Todos/TodoChangeCategory";
+import { ContextInfo } from "../../App";
 
 const TodoDetails = () => {
   const navigate = useNavigate();
@@ -32,9 +39,18 @@ const TodoDetails = () => {
 
   const [nameInput, setNameInput] = useState(todo.name);
   const [descriptionInput, setDescriptionInput] = useState(todo.content);
+  const [prioritySwitcher, setPrioritySwitcher] = useState(todo.priority);
+  const [todoCategory, setTodoCategory] = useState(null);
+
+  const [nothingChange, setNothingChanged] = useState(true);
+
+  const contextInfo = useContext(ContextInfo);
   // Submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    // TODO
+    if (nothingChange) return;
+
     updateState();
   };
 
@@ -45,21 +61,32 @@ const TodoDetails = () => {
       ...todo,
       name: nameInput ? nameInput : todo.name,
       content: descriptionInput ? descriptionInput : todo.content,
+      priority: prioritySwitcher,
     };
+    if (todoCategory === null) {
+      dispatch(
+        updateTodo({
+          category,
+          id: todo.id,
+          todo: updatedTodo,
+        })
+      );
+    } else {
+      let formattedCat = todoCategory.split(" ").join("").toLowerCase();
+      formattedCat = formattedCat === "todo" ? "todos" : formattedCat;
 
-    dispatch(
-      updateTodo({
-        category,
-        id: todo.id,
-        todo: updatedTodo,
-      })
-    );
-    navigate("/", {
-      state: {
-        status: "redirect-from-todo-details",
-        name: `"${captureName}" was updated!`,
-      },
-    });
+      dispatch(
+        moveTodoToAnotherCategory({
+          oldCategory: category,
+          newCategory: formattedCat,
+          todo: updatedTodo,
+        })
+      );
+    }
+
+    contextInfo.setShowAlert(true);
+    contextInfo.setAlertContent(`${captureName} was updated!`);
+    navigate("/");
   };
 
   const formRef = useRef(null);
@@ -70,6 +97,16 @@ const TodoDetails = () => {
     }
   };
 
+  const handleTitleChange = (e) => {
+    setNameInput(e.target.value);
+    setNothingChanged(false);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescriptionInput(e.target.value);
+    setNothingChanged(false);
+  };
+
   const handleTitleFocus = (e) => {
     setShowSpanInfo(true);
     setHideSpanInfoInitially(false);
@@ -78,6 +115,10 @@ const TodoDetails = () => {
   const handleDescriptionFocus = (e) => {
     setShowDescription(true);
     setShowSpanInfo(false);
+  };
+
+  const handleCloseDescription = (e) => {
+    setShowDescription(false);
   };
 
   if (Object.keys(selectTodo).length === 0) {
@@ -126,7 +167,7 @@ const TodoDetails = () => {
                   name="title"
                   id="details__title"
                   onKeyDown={handleKeyDown}
-                  onChange={(e) => setNameInput(e.target.value)}
+                  onChange={handleTitleChange}
                   onFocus={handleTitleFocus}
                   value={nameInput}
                 ></textarea>
@@ -155,20 +196,46 @@ const TodoDetails = () => {
                       : undefined
                   } cursor-pointer`}
                   onFocus={handleDescriptionFocus}
-                  onChange={(e) => setDescriptionInput(e.target.value)}
+                  onChange={handleDescriptionChange}
                   value={descriptionInput}
                 ></textarea>
                 {showDescription && (
                   <div className={classes.buttons}>
                     <button type="submit" className="btn">
                       Save
-                    </button>{" "}
+                    </button>
                     &nbsp;
-                    <button className="btn">Close</button>
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleCloseDescription}
+                    >
+                      Close
+                    </button>
                   </div>
                 )}
               </div>
             </div>
+
+            <TodoPriorityToggler
+              prioritySwitcher={prioritySwitcher}
+              setPrioritySwitcher={setPrioritySwitcher}
+              setNothingChanged={setNothingChanged}
+            />
+
+            <TodoChangeCategory
+              setTodoCategory={setTodoCategory}
+              category={category}
+              setNothingChanged={setNothingChanged}
+            />
+
+            {!showDescription && (
+              <div className="flex flex-justify-content-end">
+                <button type="submit" className="btn">
+                  Submit
+                </button>
+              </div>
+            )}
           </form>
         </div>
       </div>

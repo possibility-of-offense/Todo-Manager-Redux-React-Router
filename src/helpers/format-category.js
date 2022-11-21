@@ -11,3 +11,16 @@ export const formatCategory = (cat) => {
       return cat[0].toUpperCase() + cat.slice(1);
   }
 };
+
+export const formatLeftOverCategories = (cat) => {
+  switch (cat) {
+    case "todos":
+      return ["Done", "Doing"];
+    case "doing":
+      return ["To Do", "Done"];
+    case "done":
+      return ["To Do", "Doing"];
+    default:
+      return cat;
+  }
+};

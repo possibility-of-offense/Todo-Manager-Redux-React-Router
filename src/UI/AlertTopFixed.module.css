@@ -6,7 +6,7 @@
   padding: 1rem;
   text-align: center;
   background-color: skyblue;
-  z-index: 100;
+  z-index: 9999;
   opacity: 0;
   transform: translateY(-100%);
   animation: showTodo 0.25s ease-out forwards;

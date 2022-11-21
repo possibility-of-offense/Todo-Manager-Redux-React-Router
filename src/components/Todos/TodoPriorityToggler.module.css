@@ -1,0 +1,42 @@
+.priority-title {
+  font-size: 14px;
+  color: #172b4d;
+}
+
+.priority-toggler {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 80px;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+  display: grid;
+  grid-template-columns: 40px 40px;
+  position: relative;
+  cursor: pointer;
+}
+
+.priority-paddle {
+  background-color: #ddd;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  width: 41px;
+  transition: left 0.2s ease-out;
+}
+
+.priority-toggler .high-priority {
+  background-color: red;
+  color: #ddd;
+  padding: 2px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.priority-toggler .low-priority {
+  background-color: green;
+  color: #fff;
+  padding: 2px;
+  font-size: 13px;
+  text-align: center;
+}

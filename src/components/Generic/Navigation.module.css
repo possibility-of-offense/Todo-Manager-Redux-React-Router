@@ -18,6 +18,10 @@
   margin: 0 4px;
 }
 
+.nav ul li button {
+  margin: 0 !important;
+}
+
 .nav ul li img {
   display: inline-block;
   margin-right: 10px;

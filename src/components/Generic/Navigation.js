@@ -5,6 +5,7 @@ import SearchInput from "../Search/SearchInput";
 
 const Navigation = () => {
   const navigate = useNavigate();
+  const location = window.location;
 
   const handleClick = () => {
     navigate("/");
@@ -20,14 +21,19 @@ const Navigation = () => {
             <h2 className="m-none">Todo App</h2>
           </div>
         </li>
-        <li>
-          <button onClick={handleClick} className="btn">
-            See all todos
-          </button>
-        </li>
-        <li className="ml-autoIMP">
-          <SearchInput />
-        </li>
+        <div className="ml-autoIMP flex">
+          {/* Show this only in github pages */}
+          {location.host.includes("possibility-of-offense") && (
+            <li>
+              <button onClick={handleClick} className="btn">
+                See all todos
+              </button>
+            </li>
+          )}
+          <li>
+            <SearchInput />
+          </li>
+        </div>
       </ul>
     </nav>
   );
