@@ -68,7 +68,10 @@ const TodoListActions = ({ handleClosePopup }) => {
       <li onClick={() => setChangeTodoPriority((prev) => !prev)}>
         Change Priority
         {changeTodoPriority && (
-          <TodoChangePriority onClosePopup={handleClosePopup} />
+          <TodoChangePriority
+            onClosePopup={handleClosePopup}
+            todosLen={callbacksContext.selectTodosLength}
+          />
         )}
       </li>
     </ul>

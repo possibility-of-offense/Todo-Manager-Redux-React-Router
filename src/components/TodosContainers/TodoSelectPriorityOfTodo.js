@@ -28,8 +28,6 @@ const TodoSelectPriorityOfTodo = ({
     });
   };
 
-  console.log(Object.values(callbacksContext.selectTodos));
-
   return (
     <div className={classes["select-wrapper"]}>
       <select

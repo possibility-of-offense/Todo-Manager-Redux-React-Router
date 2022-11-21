@@ -4,7 +4,7 @@ import ButtonSwitcher from "../../UI/ButtonSwitcher";
 import classes from "./TodoChangePriority.module.css";
 import TodoSelectPriorityOfTodo from "./TodoSelectPriorityOfTodo";
 
-const TodoChangePriority = ({ onClosePopup }) => {
+const TodoChangePriority = ({ onClosePopup, todosLen }) => {
   const callbacksContext = useContext(ContainerPopupCallbacks);
 
   // All
@@ -69,21 +69,23 @@ const TodoChangePriority = ({ onClosePopup }) => {
         id="change-priority__form"
         className="flex flex-justify-space-between"
       >
-        <div className={classes["form-group"]}>
-          <input
-            type="radio"
-            name="priority"
-            value="all"
-            id="change-all__todo-priority"
-            onClick={handleRadioButtonClick}
-          />{" "}
-          <label
-            className="user-select-none cursor-pointer"
-            htmlFor="change-all__todo-priority"
-          >
-            Change of all
-          </label>
-        </div>
+        {todosLen > 1 && (
+          <div className={classes["form-group"]}>
+            <input
+              type="radio"
+              name="priority"
+              value="all"
+              id="change-all__todo-priority"
+              onClick={handleRadioButtonClick}
+            />{" "}
+            <label
+              className="user-select-none cursor-pointer"
+              htmlFor="change-all__todo-priority"
+            >
+              Change of all
+            </label>
+          </div>
+        )}
         <div className={classes["form-group"]}>
           <input
             type="radio"
