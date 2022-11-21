@@ -11,7 +11,7 @@ const Search = () => {
 
   if (location.search) {
     const parseQuery = location.search.slice(1).split("=");
-    queryValue = parseQuery[1];
+    queryValue = parseQuery[1].toLowerCase();
   }
 
   const selectTodos = useSelector((state) => {
