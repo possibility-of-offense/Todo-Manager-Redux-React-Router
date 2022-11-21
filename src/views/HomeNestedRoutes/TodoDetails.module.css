@@ -91,3 +91,47 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.span-info {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #ddd;
+  padding: 5px 15px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  position: relative;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.span-info.show-span-info {
+  animation: showSpanInfo 0.25s ease-in-out forwards;
+}
+
+@keyframes showSpanInfo {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hide-span-info {
+  animation: hideSpanInfo 0.25s ease-in-out forwards;
+}
+
+@keyframes hideSpanInfo {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+}

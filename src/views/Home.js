@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import Alert from "../UI/Alert";
+import AlertTopFixed from "../UI/AlertTopFixed";
 import Container from "../UI/Container";
 
 const Home = () => {
@@ -11,7 +11,6 @@ const Home = () => {
 
   useEffect(() => {
     let timer;
-
     if (
       location.state &&
       location.state.status === "redirect-from-todo-details" &&
@@ -24,22 +23,20 @@ const Home = () => {
         setShowAlert(false);
         setAlertContent("");
         navigate("/");
-      }, 4000);
-    } else {
-      navigate("/");
+      }, 2000);
     }
+
     return () => {
-      setShowAlert(false);
-      setAlertContent("");
-      clearTimeout(timer);
-      navigate("/");
+      if (showAlert) {
+        clearTimeout(timer);
+      }
     };
-  }, [location.state, showAlert]);
+  }, [location.state, showAlert, navigate]);
 
   return (
     <div>
       <Container width="medium-container">
-        {showAlert && <Alert>{alertContent}</Alert>}
+        {showAlert && <AlertTopFixed>{alertContent}</AlertTopFixed>}
         <Outlet />
       </Container>
     </div>

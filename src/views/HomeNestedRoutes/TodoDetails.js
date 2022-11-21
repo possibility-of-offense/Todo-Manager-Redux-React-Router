@@ -18,6 +18,9 @@ const TodoDetails = () => {
   const selectTodo = useSelector((state) => getTodoById(state, detail));
   const { todo, category } = selectTodo;
 
+  const [hideSpanInfoInitially, setHideSpanInfoInitially] = useState(true);
+  const [showSpanInfo, setShowSpanInfo] = useState(false);
+
   const divRef = useRef(null);
 
   const fn = function (e) {
@@ -67,6 +70,16 @@ const TodoDetails = () => {
     }
   };
 
+  const handleTitleFocus = (e) => {
+    setShowSpanInfo(true);
+    setHideSpanInfoInitially(false);
+  };
+
+  const handleDescriptionFocus = (e) => {
+    setShowDescription(true);
+    setShowSpanInfo(false);
+  };
+
   if (Object.keys(selectTodo).length === 0) {
     return (
       <div className="overlay">
@@ -82,9 +95,22 @@ const TodoDetails = () => {
     return (
       <div className="overlay">
         <div className="modal">
-          <button className={classes["go-back"]} onClick={() => navigate(-1)}>
-            Go back
-          </button>
+          <div>
+            <button className={classes["go-back"]} onClick={() => navigate(-1)}>
+              Go back
+            </button>
+            {!hideSpanInfoInitially && (
+              <span
+                className={`${classes["span-info"]} ${
+                  showSpanInfo
+                    ? classes["show-span-info"]
+                    : classes["hide-span-info"]
+                }`}
+              >
+                Press Enter if you want to save only the title changes
+              </span>
+            )}
+          </div>
           <form ref={formRef} onSubmit={handleSubmit}>
             <input type="submit" hidden />
 
@@ -93,7 +119,7 @@ const TodoDetails = () => {
                 <img alt={todo.name} title={todo.name} src={title} />
                 <span className="d-none">{todo.name}</span>
               </label>
-              <div>
+              <div className="position-relative">
                 <textarea
                   className="cursor-pointer"
                   placeholder={todo.name}
@@ -101,6 +127,7 @@ const TodoDetails = () => {
                   id="details__title"
                   onKeyDown={handleKeyDown}
                   onChange={(e) => setNameInput(e.target.value)}
+                  onFocus={handleTitleFocus}
                   value={nameInput}
                 ></textarea>
                 <span className={classes["heading__title--in-list"]}>
@@ -127,7 +154,7 @@ const TodoDetails = () => {
                       ? classes["show-textarea-description"]
                       : undefined
                   } cursor-pointer`}
-                  onFocus={(e) => setShowDescription(true)}
+                  onFocus={handleDescriptionFocus}
                   onChange={(e) => setDescriptionInput(e.target.value)}
                   value={descriptionInput}
                 ></textarea>

@@ -1,6 +1,7 @@
 import classes from "./Navigation.module.css";
 import logo from "./adwords.png";
 import { useNavigate } from "react-router-dom";
+import SearchInput from "../Search/SearchInput";
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -9,16 +10,14 @@ const Navigation = () => {
     <nav className={classes.nav}>
       <ul>
         <li onClick={() => navigate("/")}>
-          <img src={logo} alt="Logo" title="Logo" />
+          <div className="flex flex-align-items-center">
+            <img src={logo} alt="Logo" title="Logo" />
+            &nbsp;
+            <h2 className="m-none">Todo App</h2>
+          </div>
         </li>
-        <li>
-          <button>To be Add</button>
-        </li>
-        <li>
-          <button>To be Add</button>
-        </li>
-        <li>
-          <button>To be Add</button>
+        <li className="ml-autoIMP">
+          <SearchInput />
         </li>
       </ul>
     </nav>
