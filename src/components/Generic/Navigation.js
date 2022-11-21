@@ -6,6 +6,10 @@ import SearchInput from "../Search/SearchInput";
 const Navigation = () => {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate("/");
+  };
+
   return (
     <nav className={classes.nav}>
       <ul>
@@ -15,6 +19,11 @@ const Navigation = () => {
             &nbsp;
             <h2 className="m-none">Todo App</h2>
           </div>
+        </li>
+        <li>
+          <button onClick={handleClick} className="btn">
+            See all todos
+          </button>
         </li>
         <li className="ml-autoIMP">
           <SearchInput />
