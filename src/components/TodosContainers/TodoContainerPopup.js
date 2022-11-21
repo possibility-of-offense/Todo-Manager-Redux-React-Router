@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Popup from "../../UI/Popup";
 import TodoListActions from "./TodoListActions";
 
-const TodoContainerPopup = ({ popupRef, handleClosePopup }) => {
+const TodoContainerPopup = ({ popupRef, handleClosePopup, isDone }) => {
   useEffect(() => {
     const rect = popupRef.current.getBoundingClientRect();
     if (window.innerWidth - rect.x < 300) {
@@ -13,7 +13,7 @@ const TodoContainerPopup = ({ popupRef, handleClosePopup }) => {
 
   return (
     <Popup popupRef={popupRef}>
-      <TodoListActions handleClosePopup={handleClosePopup} />
+      <TodoListActions handleClosePopup={handleClosePopup} isDone={isDone} />
     </Popup>
   );
 };

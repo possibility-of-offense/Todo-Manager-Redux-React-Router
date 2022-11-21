@@ -98,6 +98,7 @@ const TodoContainer = () => {
           <TodoContainerPopupAction
             handleSorting={handleSorting}
             handleRemoveAllTodos={handleRemoveAllTodos}
+            isDone="true"
           />
         </div>
         {sortingState.todos.length > 0 ? (

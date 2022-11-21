@@ -1,10 +1,10 @@
 import classes from "./TodoListActions.module.css";
 
 import { ContainerPopupCallbacks } from "../../context/ContainerPopupCallbacks";
-import { useContext, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import TodoChangePriority from "./TodoChangePriority";
 
-const TodoListActions = ({ handleClosePopup }) => {
+const TodoListActions = ({ handleClosePopup, isDone }) => {
   const handleLiClick = (reducer = null) => {
     if (reducer) {
       reducer.cb();
@@ -65,15 +65,19 @@ const TodoListActions = ({ handleClosePopup }) => {
       >
         Delete All
       </li>
-      <li onClick={() => setChangeTodoPriority((prev) => !prev)}>
-        Change Priority
-        {changeTodoPriority && (
-          <TodoChangePriority
-            onClosePopup={handleClosePopup}
-            todosLen={callbacksContext.selectTodosLength}
-          />
-        )}
-      </li>
+      {!isDone && (
+        <Fragment>
+          <li onClick={() => setChangeTodoPriority((prev) => !prev)}>
+            Change Priority
+            {changeTodoPriority && (
+              <TodoChangePriority
+                onClosePopup={handleClosePopup}
+                todosLen={callbacksContext.selectTodosLength}
+              />
+            )}
+          </li>
+        </Fragment>
+      )}
     </ul>
   );
 };

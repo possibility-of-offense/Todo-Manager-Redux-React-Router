@@ -4,7 +4,7 @@ import classes from "./TodoContainerPopupAction.module.css";
 import { useRef, useState } from "react";
 import useDetectOutsideClick from "../../hooks/useDeteckOutsideClick";
 
-const TodoContainerPopupAction = () => {
+const TodoContainerPopupAction = ({ isDone }) => {
   const [showPopup, setShowPopup] = useState(false);
 
   const popupRef = useRef(null);
@@ -41,6 +41,7 @@ const TodoContainerPopupAction = () => {
         <TodoContainerPopup
           popupRef={popupRef}
           handleClosePopup={setShowPopup}
+          isDone={isDone}
         />
       )}
     </div>
