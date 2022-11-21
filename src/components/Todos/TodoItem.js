@@ -6,7 +6,7 @@ import { Fragment } from "react";
 import TodoPriority from "./TodoPriority";
 import { useNavigate } from "react-router-dom";
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, isDone }) => {
   let contentObj = null;
   if (todo.content.split(" ").length >= 5) {
     contentObj = shortenContent(todo.content);
@@ -34,12 +34,15 @@ const TodoItem = ({ todo }) => {
         <h3 className={`${classes["todo-item__heading"]} cursor-pointer`}>
           {todo.name}
         </h3>
-        <TodoPriority
-          className={classes["todo-item__priority"]}
-          priority={todo.priority}
-        >
-          {todo.priority.toUpperCase()}
-        </TodoPriority>
+
+        {!isDone && (
+          <TodoPriority
+            className={classes["todo-item__priority"]}
+            priority={todo.priority}
+          >
+            {todo.priority.toUpperCase()}
+          </TodoPriority>
+        )}
       </div>
 
       <p className={classes["todo-item__content"]}>

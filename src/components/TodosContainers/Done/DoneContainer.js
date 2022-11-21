@@ -101,7 +101,7 @@ const TodoContainer = () => {
           />
         </div>
         {sortingState.todos.length > 0 ? (
-          <Todos todos={sortingState.todos} />
+          <Todos todos={sortingState.todos} isDone="true" />
         ) : (
           <NoTodos>
             No todos in the <strong>Done</strong> section
