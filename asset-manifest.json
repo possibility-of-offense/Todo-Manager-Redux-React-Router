@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Todo-Manager-Redux-React-Router/static/css/main.16fd9bb2.css",
-    "main.js": "/Todo-Manager-Redux-React-Router/static/js/main.2819aabe.js",
+    "main.js": "/Todo-Manager-Redux-React-Router/static/js/main.8f41c918.js",
     "static/js/787.9538e3f3.chunk.js": "/Todo-Manager-Redux-React-Router/static/js/787.9538e3f3.chunk.js",
     "static/media/todos.jpg": "/Todo-Manager-Redux-React-Router/static/media/todos.702e67ac229ce4f60c98.jpg",
     "static/media/adwords.png": "/Todo-Manager-Redux-React-Router/static/media/adwords.892659b743d0d40ffa26.png",
     "index.html": "/Todo-Manager-Redux-React-Router/index.html",
     "main.16fd9bb2.css.map": "/Todo-Manager-Redux-React-Router/static/css/main.16fd9bb2.css.map",
-    "main.2819aabe.js.map": "/Todo-Manager-Redux-React-Router/static/js/main.2819aabe.js.map",
+    "main.8f41c918.js.map": "/Todo-Manager-Redux-React-Router/static/js/main.8f41c918.js.map",
     "787.9538e3f3.chunk.js.map": "/Todo-Manager-Redux-React-Router/static/js/787.9538e3f3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.16fd9bb2.css",
-    "static/js/main.2819aabe.js"
+    "static/js/main.8f41c918.js"
   ]
 }
