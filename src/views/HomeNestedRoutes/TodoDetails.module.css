@@ -135,3 +135,17 @@
     transform: translateY(-50%);
   }
 }
+
+.delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+}
+
+.delete img {
+  display: block;
+  max-width: 100%;
+  cursor: pointer;
+  width: 25px;
+}

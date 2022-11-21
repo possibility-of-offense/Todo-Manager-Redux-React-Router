@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import title from "./title.png";
 import meta from "./meta.png";
+import del from "./delete.png";
+
 import classes from "./TodoDetails.module.css";
 import { useContext, useRef, useState } from "react";
 import useDetectOutsideClick from "../../hooks/useDeteckOutsideClick";
 import {
+  deleteTodo,
   getTodoById,
   moveTodoToAnotherCategory,
   updateTodo,
@@ -121,6 +124,13 @@ const TodoDetails = () => {
     setShowDescription(false);
   };
 
+  const handleDeleteTodo = (id, e) => {
+    if (id) {
+      dispatch(deleteTodo({ category, id }));
+      navigate("/");
+    }
+  };
+
   if (Object.keys(selectTodo).length === 0) {
     return (
       <div className="overlay">
@@ -140,6 +150,12 @@ const TodoDetails = () => {
             <button className={classes["go-back"]} onClick={() => navigate(-1)}>
               Go back
             </button>
+            <div
+              onClick={handleDeleteTodo.bind(null, todo.id)}
+              className={classes["delete"]}
+            >
+              <img alt="Delete" title="Delete" src={del} />
+            </div>
             {!hideSpanInfoInitially && (
               <span
                 className={`${classes["span-info"]} ${
